@@ -1,0 +1,715 @@
+ta: #FF00E5;
+            --neon-purple: #7B00FF;
+        }<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --background: #0A0A0F;
+            --background-secondary: #12151F;
+            --neon-cyan: #00F0FF;
+            --neon-magen
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background);
+            color: white;
+            font-family: 'Exo 2', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--neon-cyan);
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--neon-cyan);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-cyan);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, var(--background-secondary) 0%, var(--background) 70%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--neon-cyan),
+                         0 0 20px var(--neon-cyan),
+                         0 0 40px var(--neon-cyan);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end);
+        }
+
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 1rem 2rem;
+            border: 2px solid var(--neon-cyan);
+            background: transparent;
+            color: var(--neon-cyan);
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .button:hover {
+            background: rgba(0, 240, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        /* About Me Section Styles */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--background);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 1rem;
+            object-fit: cover;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 20px var(--neon-cyan);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .about-content {
+            text-align: left;
+        }
+
+        .about-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .about-description {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0.5rem;
+            border: 1px solid var(--neon-cyan);
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @media (max-width: 768px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-content {
+                text-align: center;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--neon-cyan);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Skills Section Styles */
+        .skills {
+            padding: 6rem 2rem;
+            background: var(--background);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-cyan);
+        }
+
+        .skill-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .skill-level {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--neon-cyan);
+            border-radius: 3px;
+            transition: width 1.5s ease-in-out;
+            position: relative;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--background);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 0.5rem;
+            color: white;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            color: #ccc;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: var(--neon-cyan);
+        }
+
+        /* Animations */
+        @keyframes glow {
+            0% { filter: brightness(100%) blur(0px); }
+            50% { filter: brightness(150%) blur(2px); }
+            100% { filter: brightness(100%) blur(0px); }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Toast Notification Styles */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(0, 240, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--neon-cyan);
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast-icon {
+            font-size: 1.5rem;
+            color: var(--neon-cyan);
+        }
+
+        .toast-message {
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--neon-cyan);
+            animation: toast-progress 3s linear forwards;
+        }
+
+        @keyframes toast-progress {
+            from { width: 100%; }
+            to { width: 0%; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Dewa rafael ghany</div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Dewa rafael ghany</h1>
+            <p class="hero-subtitle">Welcome to my portofolio</p>
+            <div class="button-container">
+                <a href="#projects" class="button">
+                    Explore My Work
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="button">
+                    Contact Me
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-container">
+           My journey in the field of technology began 6 months ago, and since then, I have been working on various projects starting from e-commerce platforms. I continue to learn and adapt to new technologies to stay at the forefront of web development.
+            <div class="about-content">
+                <h3 class="about-title">Who Am I?</h3>
+                <p class="about-description">
+                    I am a passionate full-stack developer with a keen eye for design and a love for creating seamless user experiences. With expertise in both frontend and backend technologies, I bring ideas to life through clean, efficient, and maintainable code.
+                </p>
+                <p class="about-description">
+                   My journey in the field of technology began 6 months ago, and since then, I have been working on various projects starting from e-commerce platforms. I continue to learn and adapt to new technologies to stay at the forefront of web development.
+                </p>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">6+</div>
+                        <div class="stat-label">Months of experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  <section id="projects" class="projects">
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="projects-grid">
+
+<!-- Project 1 -->
+<div class="project-card">
+  <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" alt="Project 1" class="project-image">
+  <div class="project-content">
+    <h3 class="project-title">Furniture Website</h3>
+    <p class="project-description">Furniture business website</p>
+    <div class="project-tags">
+      <span class="project-tag">HTML</span>
+      <span class="project-tag">CSS</span>
+      <span class="project-tag">JavaScript</span>
+    </div>
+    <a href="https://for-business-omega.vercel.app/" class="button">View Project</a>
+  </div>
+</div>
+
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6" alt="Project 2" class="project-image">
+      <div class="project-content">
+        <h3 class="project-title">Snake Game</h3>
+        <p class="project-description">Snake game, with a modern, neon, futuristic look.</p>
+        <div class="project-tags">
+          <span class="project-tag">HTML</span>
+          <span class="project-tag">CSS</span>
+          <span class="project-tag">JavaScript</span>
+        </div>
+        <a href="https://neon-snake-by-ridho.vercel.app/" class="button">View Project</a>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Schoolwork Website" class="project-image">
+      <div class="project-content">
+        <h3 class="project-title">Schoolwork Website</h3>
+        <p class="project-description">Website tugas sekolah oleh Dewa Rafael, tampil dengan tema edukatif dan desain menarik.</p>
+        <div class="project-tags">
+          <span class="project-tag">HTML</span>
+          <span class="project-tag">CSS</span>
+          <span class="project-tag">JavaScript</span>
+        </div>
+        <a href="https://by-dewarffl.vercel.app/" class="button">View Project</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS SECTION -->
+<section id="skills" class="skills">
+  <h2 class="section-title">Skills & Expertise</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <i class="fas fa-code skill-icon"></i>
+      <h3 class="skill-name">Frontend Development</h3>
+      <div class="skill-level">
+        <div class="skill-progress" data-progress="90%"></div>
+      </div>
+      <p class="project-description">HTML, CSS, JavaScript</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-paint-brush skill-icon"></i>
+      <h3 class="skill-name">UI/UX Design</h3>
+      <div class="skill-level">
+        <div class="skill-progress" data-progress="85%"></div>
+      </div>
+      <p class="project-description">blackbox, lovable</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-server skill-icon"></i>
+      <h3 class="skill-name">Backend Development</h3>
+      <div class="skill-level">
+        <div class="skill-progress" data-progress="80%"></div>
+      </div>
+      <p class="project-description">JavaScript, Python</p>
+    </div>
+    <div class="skill-card">
+      <i class="fas fa-mobile-alt skill-icon"></i>
+      <h3 class="skill-name">Mobile Development</h3>
+      <div class="skill-level">
+        <div class="skill-progress" data-progress="75%"></div>
+      </div>
+      <p class="project-description">React Native</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="contact">
+  <h2 class="section-title">Get in Touch</h2>
+  <form class="contact-form" id="contactForm">
+    <div class="form-group">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-input" name="name" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-input" name="email" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Message</label>
+      <textarea class="form-textarea" name="message" required></textarea>
+    </div>
+    <button type="submit" class="button">
+      Send Message
+      <i class="fas fa-paper-plane"></i>
+    </button>
+  </form>
+
+  <div class="social-links">
+<a href="https://github.com/dewarffl" class="social-link" target="_blank">
+  <i class="fab fa-github"></i>
+</a>
+
+    <a href="https://www.instagram.com/dewarffl?igsh=b28zMTRuMnQwb3hr" class="social-link" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.tiktok.com/@dewarffl?_t=ZS-8xCXTgHerKL&_r=1" class="social-link" target="_blank">
+      <i class="fab fa-tiktok"></i>
+    </a>
+  </div>
+</section>
